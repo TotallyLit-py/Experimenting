@@ -6,7 +6,7 @@
 
 ---
 
-> - [ ] Database-backed Session Storage
+> - [ ] Database Session Storage
 > - [ ] Database integration (optional)
 > - [ ] Pages (multiple in one .py)
 > - [ ] Pages (auto-detect in folder)
