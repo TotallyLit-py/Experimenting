@@ -3,3 +3,11 @@
 # Totally Lit
 
 > Streamlit-based web framework 🔥
+
+---
+
+> - [ ] Database-backed Session Storage
+> - [ ] Database integration (optional)
+> - [ ] Pages (multiple in one .py)
+> - [ ] Pages (auto-detect in folder)
+> ...
