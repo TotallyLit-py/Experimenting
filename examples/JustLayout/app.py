@@ -1,7 +1,6 @@
 import streamlit as st
 
-from TotallyLit import footer, header
+from TotallyLit import layout
 
-header()
-st.header("Hello from an app with header, layout, footer, and sidebar")
-footer()
+with layout:
+    st.header("Hello from an app with header, layout, footer, and sidebar")

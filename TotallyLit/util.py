@@ -7,6 +7,11 @@ def execute_module(
     """
 
     import importlib.util
+    import os
+
+    if not os.path.isfile(filepath):
+        print(f"No file: {filepath}")
+        return
 
     if spec := importlib.util.spec_from_file_location(module_name, filepath):
         try:

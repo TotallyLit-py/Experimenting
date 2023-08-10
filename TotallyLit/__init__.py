@@ -1,4 +1,5 @@
 from .app import App
+from .layout.layout import LayoutRenderer
 
 
 def __setup_app():
@@ -37,3 +38,6 @@ def footer():
     from .layout.footer import render_footer
 
     render_footer(app.info.get_footer_path())
+
+
+layout = LayoutRenderer(header, footer)
