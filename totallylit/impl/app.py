@@ -1,15 +1,10 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from ..app import App as __App
+from ..app import App, AppInfo, Page
 
 
 @dataclass
-class TotallyLitApp(__App):
-    from dataclasses import field
-
-    from ..app import Page
-    from ..app.info import AppInfo
-
+class TotallyLitApp(App):
     _pages_by_name: dict[str, Page] = field(default_factory=dict)
 
     info: AppInfo = None
@@ -24,7 +19,7 @@ class TotallyLitApp(__App):
     def add_page(
         self, name: str, title: str = None, icon: str = None, order: int = 0
     ) -> Page:
-        from ..impl.__page import TotallyLitPage
+        from .page import TotallyLitPage
 
         page = TotallyLitPage(name, title, icon, order)
         self._pages_by_name[name] = page
@@ -36,7 +31,7 @@ class TotallyLitApp(__App):
     def add_page_from_function(
         self, function: callable, title: str = None, icon: str = None, order: int = 0
     ) -> Page:
-        from ..impl.__page import TotallyLitPage
+        from .page import TotallyLitPage
 
         page = TotallyLitPage.from_function(self, function, title, icon, order)
         self._pages_by_name[page.name] = page

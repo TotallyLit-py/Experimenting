@@ -2,8 +2,6 @@ from ..app import App, Page
 
 
 class TotallyLitPage(Page):
-    from pathlib import Path
-
     def from_function(
         app: App,
         function: callable,

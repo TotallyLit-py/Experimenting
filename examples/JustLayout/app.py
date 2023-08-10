@@ -2,20 +2,20 @@ import streamlit as st
 
 import totallylit as lit
 
-st.header("Hi.")
+lit.init()
+
+st.header("hi!")
 
 
 @lit.page("Home")
 def home():
-    pass
+    st.header("Hi from Home")
 
 
 @lit.page
 def name_not_given():
-    pass
+    st.header("Hi from name_not_given")
 
 
-st.subheader("PAGES")
-
-for p in lit.app.pages:
-    st.write(f"PAGE: {p.name} - {p.title}")
+for page in lit.context.app.pages:
+    st.write(f"{page.name} - {page.title}")
