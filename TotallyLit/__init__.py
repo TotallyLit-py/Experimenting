@@ -1,12 +1,14 @@
-from .app import App
+from .app import App, Page  # noqa: F401
+from .decorators.page import page_decorator_factory as __page_decorator_factory
 from .layout.layout import LayoutRenderer
 
 
-def __setup_app():
+def __setup_app() -> App:
     import inspect
     import os
 
     from .app.info import AppInfo
+    from .impl.__app import TotallyLitApp
 
     # Get the calling file, skipping TotallyLit and importlib stack frames
     calling_filename: str = None
@@ -22,10 +24,14 @@ def __setup_app():
         raise RuntimeError("Could not find the calling file for TotallyLit app")
 
     app_info = AppInfo(os.path.dirname(calling_filename))
-    return App(app_info)
+    return TotallyLitApp(app_info)
 
 
+# TODO NOTE: this is going to need decorators on it, specifically @app.header
+# and @app.title, so WRAP THIS.
 app: App = __setup_app()
+
+page = __page_decorator_factory(app)
 
 
 def header():
@@ -40,4 +46,5 @@ def footer():
     render_footer(app.info.get_footer_path())
 
 
+layout = LayoutRenderer(header, footer)
 layout = LayoutRenderer(header, footer)

@@ -1,6 +1,23 @@
 import streamlit as st
 
-from TotallyLit import layout
+from TotallyLit import app, page
 
-with layout:
-    st.header("Hello from an app with header, layout, footer, and sidebar")
+app.reset()
+
+st.header("Hi.")
+
+
+@page("Home")
+def home():
+    pass
+
+
+@page
+def name_not_given():
+    pass
+
+
+st.subheader("PAGES")
+
+for p in app.pages:
+    st.write(f"PAGE: {p.name} - {p.title}")

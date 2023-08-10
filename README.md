@@ -10,4 +10,5 @@
 > - [ ] Database integration (optional)
 > - [ ] Pages (multiple in one .py)
 > - [ ] Pages (auto-detect in folder)
+> - [ ] Pages middleware
 > ...
