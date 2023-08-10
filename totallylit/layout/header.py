@@ -1,4 +1,4 @@
 def render_header(filepath: str, render_function_name: str = "render"):
-    from ..util import execute_module
+    from ..util.execute_module import execute_module
 
     execute_module(filepath, render_function_name)

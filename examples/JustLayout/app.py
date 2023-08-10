@@ -19,3 +19,5 @@ def name_not_given():
 
 for page in lit.context.app.pages:
     st.write(f"{page.name} - {page.title}")
+
+st.write(f"ROOT: {lit.context.app.info.root_folder}")

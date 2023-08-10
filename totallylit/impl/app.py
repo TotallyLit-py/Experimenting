@@ -7,7 +7,7 @@ from ..app import App, AppInfo, Page
 class TotallyLitApp(App):
     _pages_by_name: dict[str, Page] = field(default_factory=dict)
 
-    info: AppInfo = None
+    info: AppInfo
 
     @property
     def pages(self) -> list[Page]:
