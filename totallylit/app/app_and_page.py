@@ -41,7 +41,12 @@ class App(__abc.ABC):
 
     @__abc.abstractmethod
     def add_page_from_function(
-        self, function: callable, title: str = None, icon: str = None, order: int = 0
+        self,
+        function: callable,
+        title: str = None,
+        icon: str = None,
+        order: int = 0,
+        name: str = None,
     ) -> "Page":
         pass
 

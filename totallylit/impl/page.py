@@ -8,8 +8,9 @@ class TotallyLitPage(Page):
         title: str = None,
         icon: str = None,
         order: int = 0,
+        name: str = None,
     ):
-        name = function.__name__
+        name = name or (name := function.__name__)
         title = (
             title if title else " ".join(part.capitalize() for part in name.split("_"))
         )

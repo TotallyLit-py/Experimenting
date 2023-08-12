@@ -29,11 +29,16 @@ class TotallyLitApp(App):
         del self._pages_by_name[name]
 
     def add_page_from_function(
-        self, function: callable, title: str = None, icon: str = None, order: int = 0
+        self,
+        function: callable,
+        title: str = None,
+        icon: str = None,
+        order: int = 0,
+        name: str = None,
     ) -> Page:
         from .page import TotallyLitPage
 
-        page = TotallyLitPage.from_function(self, function, title, icon, order)
+        page = TotallyLitPage.from_function(self, function, title, icon, order, name)
         self._pages_by_name[page.name] = page
         return page
 

@@ -7,6 +7,8 @@ from .version import VERSION  # noqa: F401
 context: __AppContext = __TotallyLitAppContext.create_new_context()
 page = __page_decorator_factory(context.app)
 
+random_dict: dict[str, any] = {}
+
 
 def init() -> None:
     context.app.reset()

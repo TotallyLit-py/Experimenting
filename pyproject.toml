@@ -11,6 +11,13 @@ python = "^3.11"
 streamlit = "^1.25.0"
 
 
+[tool.poetry.group.localsession.dependencies]
+streamlit-javascript = "^0.1.5"
+
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.21.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

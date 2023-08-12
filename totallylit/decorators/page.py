@@ -10,12 +10,14 @@ class PageDecorator:
     def __init__(self, app: App):
         self.__app = app
 
-    def __call__(cls, title: str = None, icon: str = None, order: int = 0):
+    def __call__(
+        cls, title: str = None, icon: str = None, order: int = 0, name: str = None
+    ):
         if callable(title):
             cls._static_app.add_page_from_function(title)
 
         def decorator(func):
-            cls._static_app.add_page_from_function(func, title, icon, order)
+            cls._static_app.add_page_from_function(func, title, icon, order, name)
             return func
 
         return decorator

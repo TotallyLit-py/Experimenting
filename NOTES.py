@@ -1,51 +1,60 @@
-from .totallylit.app.app_and_page import App, Page  # noqa: F401
-from .totallylit.decorators.page import (
-    page_decorator_factory as __page_decorator_factory,
-)
-from .totallylit.layout.layout import LayoutRenderer
+import streamlit as st
+from streamlit_javascript import st_javascript
+
+import totallylit as lit
+
+lit.init()
+
+st.header("hi!")
+
+if not "Something" in lit.random_dict:
+    from datetime import datetime
+
+    lit.random_dict["Something"] = f"LIT This is something! Created at {datetime.now()}"
+
+if not "Something" in st.session_state:
+    from datetime import datetime
+
+    st.session_state[
+        "Something"
+    ] = f"STREAM This is something! Created at {datetime.now()}"
+
+st.subheader(f"STREAM omething: {st.session_state['Something']}")
+st.subheader(f"LIT omething: {lit.random_dict['Something']}")
 
 
-def __setup_app() -> App:
-    import inspect
-    import os
-
-    from .totallylit.app.info import AppInfo
-    from .totallylit.impl.app import TotallyLitApp
-
-    # Get the calling file, skipping TotallyLit and importlib stack frames
-    calling_filename: str = None
-    for frame in range(2, 20):
-        try:
-            calling_filename = inspect.stack()[frame].filename
-            if calling_filename.endswith("app.py"):
-                break
-        except IndexError:
-            break
-
-    if calling_filename is None:
-        raise RuntimeError("Could not find the calling file for TotallyLit app")
-
-    app_info = AppInfo(os.path.dirname(calling_filename))
-    return TotallyLitApp(app_info)
+@lit.page("Home")
+def home():
+    st.header("Hi from Home")
 
 
-# TODO NOTE: this is going to need decorators on it, specifically @app.header
-# and @app.title, so WRAP THIS.
-app_and_page: App = __setup_app()
-
-page = __page_decorator_factory(app_and_page)
+@lit.page
+def name_not_given():
+    st.header("Hi from name_not_given")
 
 
-def header():
-    from .totallylit.layout.header import render_header
+for page in lit.context.app.pages:
+    st.write(f"{page.name} - {page.title}")
 
-    render_header(app_and_page.info.get_header_path())
+st.write(f"ROOT: {lit.context.app.info.root_folder}")
 
+js_code = """
+await new Promise(function(resolve, reject) {
+    var sessionId = localStorage.getItem('session_id');
+    if (sessionId === null) {
+        sessionId = 'YOUR-GENERATED-UUID';
+        localStorage.setItem('session_id', sessionId);
+    }
+    resolve(sessionId);
+}).then(function(sessionId) {
+    return sessionId;
+});
+"""
 
-def footer():
-    from .totallylit.layout.footer import render_footer
+return_value = st_javascript(js_code.strip(), "CoolComponent")
 
-    render_footer(app_and_page.info.get_footer_path())
-
-
-layout = LayoutRenderer(header, footer)
+if return_value:
+    session_id = return_value
+    st.write(f"Session ID: {session_id}")
+else:
+    st.write("Session ID not found!")

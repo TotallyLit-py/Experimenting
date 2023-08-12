@@ -12,6 +12,15 @@ python = "^3.11"
 streamlit = "^1.25.0"
 totallylit = {path = "../..", develop = true}
 
+[tool.poe.tasks]
+web = "streamlit run app.py --server.headless true --server.address localhost"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.21.1"
+
+
+[tool.poetry.group.localsession.dependencies]
+streamlit-javascript = "^0.1.5"
 
 [build-system]
 requires = ["poetry-core"]
