@@ -13,6 +13,15 @@ context: __AppContext = __TotallyLitAppContext.create_new_context()
 page = __page_decorator_factory(context.app)
 memory = __memory_service_thingy.memory
 
+# SWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEET
+#
+# Let's set it up so that this file JUST loads extensions and you can
+# register your OWN variables as `totallylit.X`
+#
+# if False:
+#     global test_var
+#     test_var: int = 42
+
 
 def init() -> None:
     context.app.reset()

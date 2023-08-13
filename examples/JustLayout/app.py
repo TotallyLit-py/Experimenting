@@ -8,9 +8,8 @@ lit.init()
 @lit.page("Home")
 def home():
     st.header("Hi from Home")
+    # TODO: register a memory service then uncomment the following
     # lit.memory["the_page"] = "home"
-    # lit.memory.
-    lit.memory["the_page"] = "home"
 
 
 @lit.page
