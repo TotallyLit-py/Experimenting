@@ -11,6 +11,7 @@ packages = [{include = "totallylit_example_justlayout"}]
 python = "^3.11"
 streamlit = "^1.25.0"
 totallylit = {path = "../..", develop = true}
+totallylit-testing = {path = "../../extensions/totallylit-testing", develop = true}
 
 [tool.poe.tasks]
 web = "streamlit run app.py --server.headless true --server.address localhost"

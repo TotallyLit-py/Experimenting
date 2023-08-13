@@ -5,6 +5,8 @@ description = "TotallyLit is a web framework for Streamlit"
 authors = ["Mrowr Purr <mrowr.purr@gmail.com>"]
 license = "0BSD"
 readme = "README.md"
+packages = [{include = "totallylit"}]
+exclude = ["tests/**/*", "examples/**/*", "Resources/**/*", "extensions/**/*"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -21,3 +23,4 @@ poethepoet = "^0.21.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+

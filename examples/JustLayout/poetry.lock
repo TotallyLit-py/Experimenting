@@ -1078,6 +1078,19 @@ type = "directory"
 url = "../.."
 
 [[package]]
+name = "totallylit-testing"
+version = "1.2.3"
+description = "The description of testing"
+optional = false
+python-versions = "^3.11"
+files = []
+develop = true
+
+[package.source]
+type = "directory"
+url = "../../extensions/totallylit-testing"
+
+[[package]]
 name = "typing-extensions"
 version = "4.7.1"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -1207,4 +1220,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "4cd9986631f92394c2fc51e7fb77aa7d277eb1aefe4a39f6888ab557713d61f9"
+content-hash = "bade5864763b1f8467d182faae67cb28dc5f5b56ce01251f85c152fb68bf7274"

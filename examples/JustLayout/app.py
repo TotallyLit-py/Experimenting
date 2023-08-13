@@ -10,6 +10,11 @@ def home():
     st.header("Hi from Home")
     # TODO: register a memory service then uncomment the following
     # lit.memory["the_page"] = "home"
+    #
+    # st.write(f"THE VAR VALUE: {lit.top_level_foo}")
+    # st.write(f"NUM: {lit.a_number}")
+    # lit.to
+    st.write(f"COOL: {lit.top_level_foo}")
 
 
 @lit.page
