@@ -1,0 +1,89 @@
+version: '3'
+services:
+
+  # Memory Stores
+
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+
+  memcached:
+    image: 'memcached:latest'
+    ports:
+      - '11211:11211'
+
+  # SQL Databases
+
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_PASSWORD: 'yourpassword'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Vector Databases
+
+  weaviate:
+    image: 'semitechnologies/weaviate:latest'
+    ports:
+      - '8080:8080'
+
+  # Knowledge Graphs
+
+  janusgraph:
+    image: 'janusgraph/janusgraph:latest'
+    ports:
+      - '8182:8182'
+    volumes:
+      - janusgraph_data:/var/lib/janusgraph
+
+  neo4j:
+    image: 'neo4j:latest'
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    volumes:
+      - neo4j_data:/data
+
+  # Search Engines
+
+  solr:
+    image: 'solr:latest'
+    ports:
+      - '8983:8983'
+    volumes:
+      - solr_data:/var/solr
+
+  elasticsearch:
+    image: 'elasticsearch:latest'
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      discovery.type: 'single-node'
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+  # Document Stores
+
+  mongodb:
+    image: 'mongo:latest'
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+
+
+volumes:
+  redis_data:
+  postgres_data:
+  janusgraph_data:
+  neo4j_data:
+  solr_data:
+  elasticsearch_data:
+  mongodb_data:
